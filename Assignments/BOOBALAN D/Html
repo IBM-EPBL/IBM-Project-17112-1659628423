@@ -10,7 +10,7 @@
 <div class="first">
 
    <img src="img1.jpg"> 
-  <Center><div class="name"><h2>Eshwaran S</h2><p>Student</p>
+  <Center><div class="name"><h2>Boobalan D</h2><p>Student</p>
     <button class="btn-2">Resume</button>
   <button class="btn-1">Hire me</button>
   </div></Center>
@@ -27,7 +27,7 @@
    <div class="contain">
      <h2></h2>
      <h2></h2>
-     <pre>Age       28 </pre>
+     <pre>Age       27 </pre>
       <pre>Email     boobalandharman@gmail.com@gmail.com </pre>
       <pre>Phno       9385601329 </pre>
      <pre>Address      XYZ apartment </pre>
