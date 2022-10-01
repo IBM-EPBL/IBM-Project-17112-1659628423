@@ -1,0 +1,147 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	
+}
+
+.container{
+	
+	display: flex;
+}
+
+.topbox{
+	background-color: #5DADE2 ;
+	padding: 40px;
+	padding-right: 60px;
+}
+
+.sidebox{
+	background-color: #5DADE2;
+	width: 100%
+}
+
+.image{
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+}
+
+.name{
+}
+
+.name  h2{
+	font-size: 40px;
+	text-transform: uppercase;
+	padding-top: 150px;
+	padding-left: 150px;
+}
+
+.name  h5{
+	font-size: 15px;
+	padding-left: 150px;
+}
+
+.container1{
+	
+	display: flex;
+}
+
+.bottom{
+	padding: 40px;
+	padding-right: 60px
+
+}
+
+.bottom h2{
+	font-size: 30px;
+	font-weight: bold;
+	padding-top: 20px;
+}
+
+.bottom p{
+	font-size: 15px;
+	padding-top: 20px;
+}
+.bottomright{
+	padding: 40px;
+	width: 100%;
+}
+
+.bottomright p{
+	padding-top: 20px;
+}
+
+.skills{
+	display: flex;
+	
+}
+
+.bottom1{
+	
+	padding: 40px;
+	padding-right: 60px;
+	width:  70%;
+
+}
+
+.bottom2{
+	
+	padding-top: 60px;
+	padding: 40px;
+	padding-top: 104px;
+	width: 70%;
+
+}
+
+
+
+.skills .bottom1 .box h4{
+	text-transform: uppercase;
+	color: #848c99;
+	font-weight: 500;
+	padding-top: 15px;
+
+}
+
+.skills .bottom1 .box .percent{
+	position: relative;
+	width: 100%;
+	height: 15px;
+	border-radius: 15px;
+	background-color: grey;
+
+} 
+
+
+.skills .bottom1 .box .percent div{
+	position: absolute;
+	top:  0;
+	left: 0;
+	height: 100%;
+	background: #03a9f4;
+}
+
+.skills .bottom2 .box h4{
+	text-transform: uppercase;
+	color: #848c99;
+	font-weight: 500;
+	padding-top: 15px;
+
+}
+
+.skills .bottom2 .box .percent{
+	position: relative;
+	width: 100%;
+	height: 15px;
+	border-radius: 20px;
+	background-color: grey;
+
+} 
+
+.skills .bottom2 .box .percent div{
+	position: absolute;
+	top:  0;
+	left: 0;
+	height: 100%;
+	background: #03a9f4;
+}
