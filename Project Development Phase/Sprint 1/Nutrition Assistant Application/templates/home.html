@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Home Page</title>
+{% endblock %}
+
+{% block body %}
+{% if session['username'] %}
+    <h3>Hello {{ session['username'] | title }}</h3>
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% else %}
+    <h3>Welcome to our website! </h3>
+{% endif %}
+{% endblock %}
