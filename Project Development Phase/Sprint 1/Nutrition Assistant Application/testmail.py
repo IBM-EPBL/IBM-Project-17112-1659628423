@@ -1,10 +1,14 @@
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def SendEmail(user_email, user_name):
     FROM_EMAIL =  "gokul.d.2019.cse@rajalakshmi.edu.in"
-    TEMPLATE_ID = "d-b984dfc864df48d5884a4cf0cd7d5453"
-    key = "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"
+    TEMPLATE_ID = os.getenv("SENDGRID_TEMPLATE_ID")
+    key = os.getenv("SENDGRID_KEY")
 
     message = Mail(from_email = FROM_EMAIL,
     to_emails= user_email)

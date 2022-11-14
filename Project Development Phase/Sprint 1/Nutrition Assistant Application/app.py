@@ -3,14 +3,23 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, EmailField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 import testmail
-
 import ibm_db
 
-conn = ibm_db.connect("DATABASE=bludb;HOSTNAME=2d46b6b4-cbf6-40eb-bbce-6251e6ba0300.bs2io90l08kqb1od8lcg.databases.appdomain.cloud;PORT=32328;SECURITY=SSL;SSLServerCertificate=SSLCertificate.crt;UID=cqk12082;PWD=yUYWG68g3jEqz9xT",'','')
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_HOSTNAME = os.getenv("DB_HOSTNAME")
+DB_PORT = os.getenv("DB_PORT")
+DB_USERNAME = os.getenv("DB_USERNAME")
+DB_PASS = os.getenv("DB_PASS")
+
+conn = ibm_db.connect(f"DATABASE=bludb;HOSTNAME={DB_HOSTNAME};PORT={DB_PORT};SECURITY=SSL;SSLServerCertificate=SSLCertificate.crt;UID={DB_USERNAME};PWD={DB_PASS}",'','')
 print(conn)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "m,l=nuiofbh_43knjnbfancs.m,23@#!$m,lnfasdjofnazdE@!xmcn,m12#!@n124!ERdqAklSSJNFMASDM1"
+app.config['SECRET_KEY'] = os.getenv("SECERT_KEY")
 
 class LoginForm(FlaskForm):
     email = EmailField("email", validators=[InputRequired("Email is required"), Email()])
