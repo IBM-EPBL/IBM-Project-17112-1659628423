@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash, esc
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, EmailField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
+import testmail
 
 import ibm_db
 
@@ -68,6 +69,7 @@ def signup():
         ibm_db.bind_param(prep_stmt, 2, email)
         ibm_db.bind_param(prep_stmt, 3, pass1)
         ibm_db.execute(prep_stmt)
+        testmail.SendEmail(email, username)
         flash("Registration Successful", "success")
         response = redirect(url_for('login'))
         return response

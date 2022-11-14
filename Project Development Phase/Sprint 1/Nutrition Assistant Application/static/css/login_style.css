@@ -152,17 +152,3 @@ body {
     object-fit: cover;
 
 }
-
-
-
-		.nav-link{
-     font-family: 'Bungee Spice', Georgia;
-    font-size: 20px;
-    padding-top: 29px;
-    color: rgb(127,255,0);
-}
-
-.nav-link:hover{
-    color: #00FF00!important;
-}
-		
