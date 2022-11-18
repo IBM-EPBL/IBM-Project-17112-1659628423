@@ -266,6 +266,7 @@ def index():
     sql = f"SELECT * FROM imagedetails "
     stmt = ibm_db.exec_immediate(conn, sql)
     pic = ibm_db.fetch_both(stmt)
+    print(pic)
     pics=[]
     while pic != False:
         x=[pic["IMG_LINK"],pic["ID"]]   
@@ -281,6 +282,12 @@ def test1(id):
     print(pic)
     return render_template('foodinfo.html', files = pic)
 
+@app.route('/pictures')
+def pictures():
+    sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and ref_id='{escape(id)}'"
+    stmt = ibm_db.exec_immediate(conn, sql)
+    pic = ibm_db.fetch_both(stmt)
+    return render_template('storage.html', files = pic)
 
 if __name__ == '__main__':
     app.run(debug=True)
