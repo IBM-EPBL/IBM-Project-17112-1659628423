@@ -1,0 +1,87 @@
+a,
+a:hover{
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FF0000;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 100%;
+	font-weight: 400;
+}
+
+::-webkit-scrollbar{
+	width: 0.625rem;
+}
+
+::-webkit-scrollbar-track{
+	background: white;
+}
+
+::-webkit-scrollbar-thumb{
+	background: #AB2C48;
+}
+
+.navigation-wrap{
+	position: fixed;
+	width: 100%;
+	left:0;
+	z-index: 1000;
+	-webkit-transition:all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.navigation-wrap .nav-item{
+	padding: 0 0.625rem;
+	transition: all 200ms linear;
+}
+
+.navbar-toggler:focus{
+	outline: unset;
+	border: unset;
+	box-shadow: none;
+}
+
+.nav-item .nav-link{
+	font-size: 0.9375rem;
+	font-weight: 600;
+	text-transform: capitalize;
+	color: #D12B10;
+	letter-spacing: 1px;
+}
+.nav-item .nav-link a:hover{
+	color: #FF0000;
+}
+
+.navigation-wrap.scroll-on{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	background: white;
+	box-shadow: 0 0.125rem 1.75rem 0 rgb(0,0,0,0.09);
+	transition: all .15s ease-in-0s;
+}
+
+.card{
+	margin-left: 37%;
+	margin-top: 5%;
+	border: 1px solid;
+	width: 23rem;
+}
+
+.collapse .card-body{
+	margin-right: 5%;
+}
+
+.feature-heading{
+	padding-top: 5%;
+	text-align: center;
+}

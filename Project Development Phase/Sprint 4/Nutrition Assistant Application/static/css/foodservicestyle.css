@@ -1,0 +1,138 @@
+a,
+a:hover{
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FF0000;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 100%;
+	font-weight: 400;
+}
+
+::-webkit-scrollbar{
+	width: 0.625rem;
+}
+
+::-webkit-scrollbar-track{
+	background: white;
+}
+
+::-webkit-scrollbar-thumb{
+	background: #AB2C48;
+}
+
+/* .navigation-wrap{
+	position: fixed;
+	width: 100%;
+	left:0;
+	z-index: 1000;
+	-webkit-transition:all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+} */
+
+.navigation-wrap .nav-item{
+	padding: 0 0.625rem;
+	transition: all 200ms linear;
+}
+
+.navbar-toggler:focus{
+	outline: unset;
+	border: unset;
+	box-shadow: none;
+}
+
+.nav-item .nav-link{
+	font-size: 0.9375rem;
+	font-weight: 600;
+	text-transform: capitalize;
+	color: #D12B10;
+	letter-spacing: 1px;
+}
+.nav-item .nav-link a:hover{
+	color: #FF0000;
+}
+
+.navigation-wrap.scroll-on{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	background: white;
+	box-shadow: 0 0.125rem 1.75rem 0 rgb(0,0,0,0.09);
+	transition: all .15s ease-in-0ut 0s;
+}
+
+
+.feature-heading{
+	padding-top: 5%;
+	text-align: center;
+}
+
+.top-banner3{
+	padding-bottom: 10%;
+}
+.top-banner2{
+	padding-top: 5%;
+	padding-left: 50%;
+}
+
+.serv-field {
+    padding-top: 50px;
+}
+.serv-field .serv-box {
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 5px;
+    border: 1px solid;
+    box-shadow: 2px 2px 5px rgba(136, 136, 136, 0.3);
+}
+
+.serv-field .serv-box .icon {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    color:#5C46F9;
+    border-radius: 50%;
+}
+.serv-field .serv-box .icon:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #F7F7FC;
+    z-index: -1;
+}
+.serv-field .serv-box .icon i {
+    font-size: 30px;
+}
+.serv-field .serv-box h4 {
+    font-size: 25px;
+    color:  #090719;
+}
+.serv-field .serv-box p {
+    color:  #787878;
+    margin-bottom: 0px;
+}
+
+.serv-field .serv-box .form-group{
+	text-align: center;
+	padding-left: 15%;
+}
