@@ -26,10 +26,10 @@
             <a class="nav-link" aria-current="page" href="/dashboard">DashBoard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/services">Food Services</a>
+            <a class="nav-link" aria-current="page" href="/uploader">Food Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/tracker">Daily Track</a>
+            <a class="nav-link" aria-current="page" href="/pictures">Food Details</a>
           </li>
           <li>
             <a class="btn btn-primary ms-4" href="/dashboard" role="button">Back</a>
@@ -50,10 +50,10 @@
     </div>
   </div>
 </section>
-
-{% for i in items %}
+{% if foods %}
+{% for food in foods %}
 <div class="card">
-  <img src="{{files[8]}}">
+  <img src="{{food[8]}}">
   <div class="card-body">
     <p>
       <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
@@ -63,38 +63,19 @@
     </p>
     <div class="collapse" id="collapseExample">
       <div class="card-body">
-        Food item : {{files[6]}}<br>
-        Calories: {{files[2]}} Kcal<br>
-        Carbs: {{files[3]}} Gm<br>
-        Fat: {{files[4]}} Gm<br>
-        Protein: {{files[5]}} Gm
+        Food item : {{food[6]}}<br>
+        Calories: {{food[2]}} Kcal<br>
+        Carbs: {{food[3]}} Gm<br>
+        Fat: {{food[4]}} Gm<br>
+        Protein: {{food[5]}} Gm
       </div>
     </div>
 
   </div>
 </div>
-
 {% endfor %}
-
-<div class="card">
-  <img src="{{url_for('static', filename='images/pizza.jpg')}}">
-  <div class="card-body">
-    <p>
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1"
-        aria-expanded="false" aria-controls="collapseExample1">
-        Show Nutrition Value
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample1">
-      <div class="card-body">
-        Food item : 387.0<br>
-        Calories: 24.0 Kcal<br>
-        Carbs: 21.0 Gm<br>
-        Fat:25.0 Gm<br>
-        Protein: 6 Gm
-      </div>
-    </div>
-
-  </div>
-</div>
+{% else %}
+<br>
+<center><h1>No food pictures uploaded</h1></center>
+{% endif %}
 {% endblock %}

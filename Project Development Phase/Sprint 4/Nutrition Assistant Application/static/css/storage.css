@@ -29,15 +29,6 @@ body{
 	background: #AB2C48;
 }
 
-.navigation-wrap{
-	position: fixed;
-	width: 100%;
-	left:0;
-	z-index: 1000;
-	-webkit-transition:all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-}
-
 .navigation-wrap .nav-item{
 	padding: 0 0.625rem;
 	transition: all 200ms linear;

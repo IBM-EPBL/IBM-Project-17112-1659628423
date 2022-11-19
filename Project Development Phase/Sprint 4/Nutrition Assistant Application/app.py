@@ -68,6 +68,7 @@ def login():
             return redirect(url_for('login'))
 
         session['username'] =  dic['USERNAME']
+        session['uid'] =  dic['UID']
         return redirect(url_for('dashboard'))
     else:
         return render_template("login.html", form=form)
@@ -118,19 +119,15 @@ def forgot_password():
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('username')
+    session.pop('uid')
     return redirect(url_for('home'))
-
-@app.route('/tracker', methods=['GET', 'POST'])
-def tracker():
-    return render_template("dailytrack.html")
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+    if not 'username' in session:
+        flash("Login to access pages", "error")
+        return(redirect(url_for('home')))
     return render_template("dashboard.html")
-
-@app.route('/services', methods=['GET', 'POST'])
-def services():
-    return render_template("foodservices.html")
 
 def get_item(bucket_name, item_name):
     print("Retrieving item from bucket: {0}, key: {1}".format(bucket_name, item_name))
@@ -156,18 +153,6 @@ def get_bucket_contents(bucket_name):
         print("CLIENT ERROR: {0}\n".format(be))
     except Exception as e:
         print("Unable to retrieve bucket contents: {0}".format(e))
-
-
-def delete_item(bucket_name, object_name):
-    try:
-        cos.Object(bucket_name, object_name).delete()
-        print("Item: {0} deleted!\n".format(object_name))
-    except ClientError as be:
-        print("CLIENT ERROR: {0}\n".format(be))
-    except Exception as e:
-        print("Unable to delete object: {0}".format(e))
-
-
 
 def multi_part_upload(bucket_name, item_name, file_path):
     try:
@@ -196,31 +181,27 @@ def multi_part_upload(bucket_name, item_name, file_path):
     except ClientError as be:
         print("CLIENT ERROR: {0}\n".format(be))
     except Exception as e:
-        print("Unable to complete multi-part upload: {0}".format(e))
-
-@app.route('/deletefile', methods = ['GET', 'POST'])
-def deletefile():
-    if request.method == 'POST':
-        bucket=request.form['bucket']
-        name_file=request.form['filename']
-        
-        delete_item(bucket,name_file)
-        return 'file deleted successfully'
-        
-    if request.method == 'GET':
-        return render_template('delete.html')
-        
+        print("Unable to complete multi-part upload: {0}".format(e))  
 	
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload():
+    if not 'username' in session:
+        flash("Login to access pages", "error")
+        return(redirect(url_for('home'))
+)
     if request.method == 'POST':
-        name_file=request.form['filename']
+        bucket=os.getenv("BUCKET_NAME")
         f = request.files['file']
-        multi_part_upload("flask-app-test",name_file,f.filename)
-        sql = f"INSERT INTO imagedetails(img_link) VALUES(?)"
-        imagelink = f"https://flask-app-test.s3.jp-tok.cloud-object-storage.appdomain.cloud/{escape(name_file)}"
+        filename = f.filename
+        file_path = os.path.join('static/uploads', filename)
+        f.save(file_path)
+        multi_part_upload(bucket,filename,file_path)
+        uid = session['uid']
+        sql = f"INSERT INTO imagedetails(img_link, uid) VALUES(?, ?)"
+        imagelink = f"https://flask-app-test.s3.jp-tok.cloud-object-storage.appdomain.cloud/{escape(filename)}"
         prep_stmt = ibm_db.prepare(conn, sql)
         ibm_db.bind_param(prep_stmt, 1, imagelink)
+        ibm_db.bind_param(prep_stmt, 2, uid)
         ibm_db.execute(prep_stmt)
 
         sql = f"SELECT ID FROM imagedetails WHERE img_link='{escape(imagelink)}'"
@@ -228,7 +209,7 @@ def upload():
         image_id = ibm_db.fetch_both(stmt)
         nutitionapi(imagelink,image_id)
 
-        return redirect(url_for('test'))
+        return redirect(url_for('pictures'))
        
     if request.method == 'GET':
         return render_template('foodservices.html')
@@ -250,7 +231,7 @@ def nutitionapi(imagelink,image_id):
         fat= y["nutrition"]["fat"]["value"]
         protein= y["nutrition"]["protein"]["value"]
         name=y["category"]["name"]
-        image=image_id["ID"]
+        image=image_id["ID"]  
         sql = f"INSERT INTO nutritiondetails(calories,carbs,fat,protein,ref_id,name) VALUES('{escape(cal)}','{escape(Carb)}','{escape(fat)}','{escape(protein)}','{escape(image)}','{escape(name)}')"
         
         prep_stmt = ibm_db.prepare(conn, sql)
@@ -261,33 +242,27 @@ def nutitionapi(imagelink,image_id):
     except openapi_client.ApiException as e:
         print("Exception when calling MiscApi->image_analysis_by_url: %s\n" % e) 
 
-@app.route('/index', methods = ['GET', 'POST'])
-def index():
-    sql = f"SELECT * FROM imagedetails "
+@app.route('/pictures', methods = ['GET', 'POST'])
+def pictures():
+    if not 'username' in session:
+        flash("Login to access pages", "error")
+        return(redirect(url_for('home')))
+    uid = session['uid']
+    sql = f"SELECT * FROM imagedetails where imagedetails.uid='{escape(uid)}'"
     stmt = ibm_db.exec_immediate(conn, sql)
     pic = ibm_db.fetch_both(stmt)
-    print(pic)
     pics=[]
     while pic != False:
-        x=[pic["IMG_LINK"],pic["ID"]]   
+        x=[pic["ID"], pic["IMG_LINK"]]   
         pics.append(x)
         pic = ibm_db.fetch_both(stmt)
-    return render_template('index.html', files = pics)
-
-@app.route('/t/<id>', methods = ['GET', 'POST'])
-def test1(id):
-    sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and ref_id='{escape(id)}'"
-    stmt = ibm_db.exec_immediate(conn, sql)
-    pic = ibm_db.fetch_both(stmt)
-    print(pic)
-    return render_template('foodinfo.html', files = pic)
-
-@app.route('/pictures')
-def pictures():
-    sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and ref_id='{escape(id)}'"
-    stmt = ibm_db.exec_immediate(conn, sql)
-    pic = ibm_db.fetch_both(stmt)
-    return render_template('storage.html', files = pic)
+    x = []
+    for i in pics:
+        sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and ref_id='{escape(i[0])}'"
+        stmt = ibm_db.exec_immediate(conn, sql)
+        pic = ibm_db.fetch_both(stmt)
+        x.append(pic)
+    return render_template('storage.html', foods = x)
 
 if __name__ == '__main__':
     app.run(debug=True)
