@@ -40,4 +40,4 @@ TEAM ID: PNT2022TMID02126
   - [x] Project Development - Delivery of Sprint-1
   - [x] Project Development - Delivery of Sprint-2
   - [x] Project Development - Delivery of Sprint-3
-  - [ ] Project Development - Delivery of Sprint-4
+  - [x] Project Development - Delivery of Sprint-4
