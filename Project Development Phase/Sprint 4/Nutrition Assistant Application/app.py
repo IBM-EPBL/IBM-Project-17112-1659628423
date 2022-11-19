@@ -231,8 +231,8 @@ def nutitionapi(imagelink,image_id):
         fat= y["nutrition"]["fat"]["value"]
         protein= y["nutrition"]["protein"]["value"]
         name=y["category"]["name"]
-        image=image_id["ID"]  
-        sql = f"INSERT INTO nutritiondetails(calories,carbs,fat,protein,ref_id,name) VALUES('{escape(cal)}','{escape(Carb)}','{escape(fat)}','{escape(protein)}','{escape(image)}','{escape(name)}')"
+        imageid=image_id["ID"]  
+        sql = f"INSERT INTO nutritiondetails(calories,carbs,fat,protein,ref_id,name) VALUES('{escape(cal)}','{escape(Carb)}','{escape(fat)}','{escape(protein)}','{escape(imageid)}','{escape(name)}')"
         
         prep_stmt = ibm_db.prepare(conn, sql)
 
@@ -258,10 +258,12 @@ def pictures():
         pic = ibm_db.fetch_both(stmt)
     x = []
     for i in pics:
-        sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and ref_id='{escape(i[0])}'"
+        sql = f"SELECT * FROM nutritiondetails,imagedetails where nutritiondetails.ref_id=imagedetails.id and nutritiondetails.ref_id  = {escape(i[0])}"
+        print(i[0])
         stmt = ibm_db.exec_immediate(conn, sql)
         pic = ibm_db.fetch_both(stmt)
         x.append(pic)
+    print(x)
     return render_template('storage.html', foods = x)
 
 if __name__ == '__main__':
