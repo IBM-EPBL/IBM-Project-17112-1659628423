@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>DashBoard Page</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/dashboardstyle.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatemo-finance-business.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+<header>
+  <nav class="navbar navbar-expand-lg navigation-wrap">
+    <div class="container">
+      <a href="/">
+        <img src="{{url_for('static', filename='images/logo.png')}}">
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarText">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/dashboard">DashBoard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/uploader">Food Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/pictures">Food Details</a>
+          </li>
+          <li>
+            <a class="btn btn-primary ms-4" href="/" role="button">Back</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section id="home">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{url_for('static', filename='images/slideimg.jpg')}}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Welcome To <span style="color:#D12B10;">Nutrify</span></h1><br><br>
+          <p>Some of the Features of Nutrify are <span style="color:#D12B10; font-weight: bold;">Food
+              Services</span>-which gives the nutrition value of the food and<span
+              style="color:#D12B10; font-weight: bold;"> Daily Track</span>-which gdives the daily/weekly intake of
+            Nutrition Value. </p>
+          <div class="mt-4">
+            <a class="btn btn-danger rounded-pill" href="/dashboard" role="button">Try Now</a>
+
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="item1">
+          <img src="{{url_for('static', filename='images/slideimg.jpg')}}" class="d-block w-100">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Food Details <span style="color:#D12B10;">&</span></h2>
+            <h2>Nutrition</h2>
+            <p>If you enter the image of the food we can give you the list of nutrition values which are present in the
+              food.</p>
+            <div class="mt-4">
+              <a class="btn btn-danger rounded-pill" href="/pictures" role="button">Click Here</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="item2">
+          <img src="{{url_for('static', filename='images/slideimg.jpg')}}" class="d-block w-100">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Track Your <span style="color:#D12B10;">Food</span></h2><br>
+            <p>We provide a service where you can enter your daily intake of food as per your schedule.
+              You can also track daily/weekly intake of total nutrition value</p>
+            <div class="mt-4">
+              <a class="btn btn-danger rounded-pill" href="/uploader" role="button">Click Here</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</section>
+
+<section class="feature section-padding" id="feature">
+  <div class="container-fluid px-0 top-banner1">
+    <div class="container">
+      <div class="feature-heading" style="visibility: visible; animation-name: zoom">
+        <h2>Our <span style="color:#D12B10;">Services</span></h2>
+      </div>
+      <div class="serv-field row ml-50">
+        <div class="col-12 col-md-6 col-lg-4 text-center">
+          <div class="serv-box">
+            <h4><span style="color:#D12B10;">Food Services</span></h4><br>
+            <p>If you upload the food images you will get the information about the food and its nutrients Value.</p>
+            <div class="mt-4">
+              <a class="btn btn-danger rounded-pill" href="/uploader" role="button">Try Now</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 text-center">
+          <div class="serv-box">
+            <h4><span style="color:#D12B10;">Food Storage</span></h4>
+            <br>
+            <p>you can look at all your uploaded food pictures and their.
+              nutrition value here.</p>
+            <div class="mt-4">
+              <a class="btn btn-danger rounded-pill" href="/pictures" role="button">Click to view</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  let nav = document.querySelector(".navigation-wrap");
+  window.onscroll = function () {
+    if (document.documentElement.scrollTop > 20) {
+      nav.classList.add("scroll-on");
+    } else {
+      nav.classList.remove("scroll-on");
+    }
+  }
+
+</script>
+
+<footer id="aboutus">
+  <div class="container">
+    <div class="row pb-4">
+      <div class="foot-info col-12 col-md-6 col-lg-9">
+        <a class="foot-logo" href="#home">
+          Nutri<span style="color:#D12B10;">fy</span>
+        </a>
+        <div class="mail">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:gokul.d.2019.cse@rajalakshmi.edu.in">gokul.d.2019.cse@rajalakshmi.edu.in</a>
+        </div>
+        <div class="mail">
+          <p>Contact Us: +91 12345 67890</p>
+        </div>
+      </div>
+    </div>
+</footer>
+
+{% endblock %}

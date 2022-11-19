@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Food Service Page</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/foodservicestyle.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/templatemo-finance-business.css')}}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+  <header>
+    <nav class="navbar navbar-expand-lg navigation-wrap">
+      <div class="container">
+        <a href="/">
+          <img src="{{url_for('static', filename='images/logo.png')}}">
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/dashboard">DashBoard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/uploader">Food Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/pictures">Food Details</a>
+            </li>
+            <li>
+              <a class="btn btn-primary ms-4" href="/dashboard" role="button">Back</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  </section>
+
+  <section class="feature section-padding" id="feature">
+    <div class="container-fluid px-0 top-banner1">
+      <div class="container">
+        <div class="feature-heading" style="visibility: visible; animation-name: zoom">
+          <h1>Food <span style="color:#D12B10;">Services</span></h1>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="feature section-padding" id="feature">
+    <div class="container-fluid px-0 top-banner1">
+      <div class="container">
+        <div class="feature-heading" style="visibility: visible; animation-name: zoom">
+          <h4>Enter the food information, and <span style="color:#D12B10;">we'll provide the nutrient value.</span></h4>
+          <h5><span>Upload the image of the food and then Click OK button</span>
+            <h5>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="feature section-padding" id="trackfood">
+    <div class="container-fluid px-0 top-banner2">
+      <div class="container">
+        <div class="serv-field row mt-4">
+          <div class="col-12 text-center">
+            <div class="serv-box">
+              <div class="icon">
+                <i class="bi bi-image"></i>
+              </div>
+              <h4>Please upload an image</h4> <br>
+              <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="filename" placeholder="Enter File Name">
+                  <br>
+                  <input type="file" name = "file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <br>
+                <center>
+                  <button type="submit" class="btn btn-outline-primary" aria-pressed="true"> OK </button>
+                </center>
+              </form>
+              <br>
+
+              
+
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="feature section-padding" id="feature">
+    <div class="container-fluid px-0 top-banner3">
+      <div class="container">
+        <div class="feature-heading" style="visibility: visible; animation-name: zoom">
+          <h4><span style="color: red;">Note :</span> If the image is Blur/Not clear, it is difficult to process. So
+            upload the Clear Image of the food.</h4>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+{% endblock %}
