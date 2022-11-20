@@ -16,9 +16,9 @@ TEAM ID: PNT2022TMID02126
 - [x] Integrate SendGrid Service
   - [x] SendGrid Integration with Python code
 - [x] Deployment of App in IBM Cloud
-  - [ ] Containerize the App
-  - [ ] Upload image to IBM Container Registry
-  - [ ] Deploy in Kubernetes Cluster
+  - [x] Containerize the App
+  - [x] Upload image to IBM Container Registry
+  - [x] Deploy in Kubernetes Cluster
 - [x] Ideation Phase
   - [x] Literature Survey
   - [x] Empathy Map
