@@ -187,8 +187,7 @@ def multi_part_upload(bucket_name, item_name, file_path):
 def upload():
     if not 'username' in session:
         flash("Login to access pages", "error")
-        return(redirect(url_for('home'))
-)
+        return(redirect(url_for('home')))
     if request.method == 'POST':
         bucket=os.getenv("BUCKET_NAME")
         f = request.files['file']
