@@ -4,6 +4,11 @@
 
 [Demo video](https://drive.google.com/file/d/1FqE3NqrQQZLvwlyCotqAezNMo-bke0pi/view?usp=sharing)
 
+
+### Introduction: 
+This project aims at building a web App that automatically estimates food attributes such as ingredients and nutritional value by classifying the input image of food.  Our method employs Spoonacular's Food Detection Model for accurate food identification and Food API's to give the nutritional value of the identified food.
+
+
 ### Features:
 * Home Page
 * Login Page
@@ -11,6 +16,7 @@
 * Dashboard
 * Upload Page
 * View Foods
+
 
 ### Screenshots: 
 
