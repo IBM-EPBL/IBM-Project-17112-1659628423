@@ -4,7 +4,7 @@
 
 [Demo video](https://drive.google.com/file/d/1FqE3NqrQQZLvwlyCotqAezNMo-bke0pi/view?usp=sharing)
 
-### feature:
+### Features:
 * Home Page
 * Login Page
 * Sign Up Page
