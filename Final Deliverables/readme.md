@@ -1,5 +1,5 @@
 # Nutrition Assistant Application
 
-[a Live Web site] http://169.51.204.41:31301/
+[Live Web site](http://169.51.204.41:31301/)
 
-[a Demo video] https://drive.google.com/file/d/1FqE3NqrQQZLvwlyCotqAezNMo-bke0pi/view?usp=sharing
+[Demo video](https://drive.google.com/file/d/1FqE3NqrQQZLvwlyCotqAezNMo-bke0pi/view?usp=sharing)
