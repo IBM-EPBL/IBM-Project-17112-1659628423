@@ -16,3 +16,18 @@
 
 #### Home Page: 
 ![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/home.png?raw=true)
+
+#### Login Page: 
+![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/login.png?raw=true)
+
+#### Sign Up Page: 
+![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/register.png?raw=true)
+
+#### Dashboard: 
+![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/dashboard.png?raw=true)
+
+#### Upload Page:
+![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/services.png?raw=true)
+
+#### View Foods: 
+![image](https://github.com/IBM-EPBL/IBM-Project-17112-1659628423/blob/main/Final%20Deliverables/Screenshot/uploaded%20pictures.png?raw=true)
